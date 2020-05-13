@@ -6,7 +6,7 @@ class Network:
     """
 
     @classmethod
-    def build(cls, num_inputs=3, layers=[32, 16, 16, 32], activation='softplus', num_outputs=2):
+    def build(cls, num_inputs=3, layers=[32, 32], activation='softplus', num_outputs=2):
         """
         Build a keras network model with input shape (t, v0_x, v0_z) and output shape (x, z).
 

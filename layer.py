@@ -7,7 +7,7 @@ class GradientLayer(tf.keras.layers.Layer):
     Attributes:
         model: keras network model.
     """
-    
+
     def __init__(self, model, **kwargs):
         """
         Args:
