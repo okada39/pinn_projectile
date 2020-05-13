@@ -12,36 +12,40 @@ The effectiveness of PINNs is validated in the following works.
 * [M. Raissi, et al., Physics Informed Deep Learning (Part I): Data-driven Solutions of Nonlinear Partial Differential Equations, arXiv: 1711.10561 (2017).](https://arxiv.org/abs/1711.10561)
 * [M. Raissi, et al., Physics Informed Deep Learning (Part II): Data-driven Discovery of Nonlinear Partial Differential Equations, arXiv: 1711.10566 (2017).](https://arxiv.org/abs/1711.10566)
 
-L-BFGS-B in scipy
+In addition, an effective convergent optimizer is required to solve the differential equations accurately using PINNs. The stochastic gradient dicent is generally used in deep learnigs, but it only depends on the primary gradient (Jacobian). In contrast, the quasi-Newton based approach such as the limited-memory Broyden-Fletcher-Goldfarb-Shanno method for bound constraints (L-BFGS-B) incorporates the quadratic gradient (Hessian), and gives a more accurate convergence.
 
-Scripts and data is given as follows.
+We implement a PINN model with the L-BFGS-B optimization for a projectile motion as the simple example.  
+Scripts is given as follows.
 
-* *example : example video data.*
-    * *golf*
-        * `golf.mp4` : example video (free license in [pixbay](https://pixabay.com/)).
-    * *yoga*
-        * `yoga_1.mp4` : example video (free license in [pixbay](https://pixabay.com/)).
-        * `yoga_2.mp4` : example video (free license in [pixbay](https://pixabay.com/)).
-    * `list.csv` : example input video list with labels.
-* *lib : libraries to implement YouTube-8M based feature extraction.*
-    * `feature_extractor.py` : extracting rgb and audio features from a video.
-    * `path_listing.py` : listing filepaths with data label as a dictionary.
-    * `video_crawler.py` : crawl videos extracting features as .yml files.
-* `main.py` : main routine to extract rgb and audio features from videos.
+* *lib : libraries to implement the PINN model for a projectile motion.*
+    * `layer.py` : computing 1st and 2nd derivatives as a custom layer.
+    * `network.py` : building a keras network model.
+    * `optimizer.py` : implementing the L-BFGS-optimization.
+    * `pinn.py` : training the projectile motion in the network model.
+    * `tf_silent.py` : suppressing tensorflow warnings
+* `main.py` : main routine to run and test the PINN solver.
 
 ## Requirement
 
 You need Python 3.6 and the following packages.
 
 | package    | version (recommended) |
-| -          | -       |
-| argparse   | -       |
-| numpy      | 1.16.5  |
-| pandas     | 1.0.3   |
-| pathlib    | -       |
-| pyyaml     | 3.12    |
-| tensorflow | 1.14.0  |
+| -          | -      |
+| matplotlib | 3.2.1  |
+| numpy      | 1.18.1 |
+| scipy      | 1.3.1  |
+| tensorflow | 2.1.0  |
+
+GPU acceleration is recommended in the following environments.
+
+| package        | version (recommended) |
+| -              | -     |
+| cuda           | 10.1  |
+| cudnn          | 7.6.5 |
+| tensorflow-gpu | 2.1.0 |
 
 ## Usage
 
 example result (image)
+
+![result_img](result_img.png)
