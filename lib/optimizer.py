@@ -1,6 +1,6 @@
+import scipy.optimize
 import numpy as np
 import tensorflow as tf
-from scipy.optimize import fmin_l_bfgs_b
 
 class L_BFGS_B:
     """
@@ -118,7 +118,7 @@ class L_BFGS_B:
         print('Optimizer: L-BFGS-B (maxiter={})'.format(self.maxiter))
         self.progbar.on_train_begin()
         self.progbar.on_epoch_begin(1)
-        fmin_l_bfgs_b(func=self.evaluate, x0=initial_weights,
+        scipy.optimize.fmin_l_bfgs_b(func=self.evaluate, x0=initial_weights,
             factr=self.factr, maxiter=self.maxiter, callback=self.callback)
         self.progbar.on_epoch_end(1)
         self.progbar.on_train_end()
