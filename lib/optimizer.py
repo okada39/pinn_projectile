@@ -16,7 +16,7 @@ class L_BFGS_B:
         progbar: progress bar
     """
 
-    def __init__(self, model, samples, factr=1e6, maxiter=3000):
+    def __init__(self, model, samples, factr=1e5, maxiter=3000):
         """
         Args:
             model: optimization target model.
