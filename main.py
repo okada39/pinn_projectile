@@ -54,8 +54,8 @@ if __name__ == '__main__':
     x = np.concatenate([t, v0], axis=-1)
     r_pred = network.predict(x, batch_size=num_test_samples)
     # plot theory vs prediction
-    plt.plot(*theoretical_motion(x, g), label='theory')
-    plt.plot(r_pred[..., 0], r_pred[..., 1], label='pinn')
+    plt.plot(*theoretical_motion(x, g), label='theory', color='crimson')
+    plt.scatter(r_pred[..., 0], r_pred[..., 1], label='pinn', s=5, color='royalblue')
     plt.xlabel('x')
     plt.ylabel('z')
     plt.legend()
