@@ -30,10 +30,6 @@ if __name__ == '__main__':
     num_train_samples = 10000
     # number of test samples
     num_test_samples = 100
-    # number of training epochs
-    epochs = 10
-    # batch size
-    batch_size = 64
     # gravity acceleration
     g = 1.0
 
