@@ -1,9 +1,9 @@
-import tf_silent
+import lib.tf_silent
 import numpy as np
 import matplotlib.pyplot as plt
-from pinn import PINN
-from network import Network
-from optimizer import L_BFGS_B
+from lib.pinn import PINN
+from lib.network import Network
+from lib.optimizer import L_BFGS_B
 
 def theoretical_motion(input, g):
     """
