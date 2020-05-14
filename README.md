@@ -1,7 +1,12 @@
 # pinn_projectile
 
-This module implements the Physics Informed Neural Network (PINN) model for a projectile motion.
-For simplicity, the spacial variables are reduced to two dimensions `x(t)` and `z(t)`, and initial positions are fixed to `x(0) = z(0) = 0`. The PINN model predicts `x(t), z(t)` for `t, v0_x, v0_z`, where `v0_x, v0_z` are initial velocities at `t=0`.
+This module implements the Physics Informed Neural Network (PINN) model for a projectile motion. The differential equation is given by
+
+$$
+\frac{d^2 \mathbf{r}}{dt} = -gz,
+$$
+
+where $\mathbf{r} = (x, z)$ is the spatial position and $g$ is the gravity acceleration. For simplicity, the spacial variables are reduced to two dimensions `x(t)` and `z(t)`, and initial positions are fixed to `x(0) = z(0) = 0`. The PINN model predicts `x(t), z(t)` for `t, v0_x, v0_z`, where `v0_x, v0_z` are initial velocities at `t=0`.
 
 ## Description
 
@@ -20,7 +25,7 @@ Scripts is given as follows.
 * *lib : libraries to implement the PINN model for a projectile motion.*
     * `layer.py` : computing 1st and 2nd derivatives as a custom layer.
     * `network.py` : building a keras network model.
-    * `optimizer.py` : implementing the L-BFGS-optimization.
+    * `optimizer.py` : implementing the L-BFGS-B optimization.
     * `pinn.py` : training the projectile motion in the network model.
     * `tf_silent.py` : suppressing tensorflow warnings
 * `main.py` : main routine to run and test the PINN solver.
