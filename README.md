@@ -1,6 +1,6 @@
 # pinn_projectile
 
-This module implements the Physics Informed Neural Network (PINN) model for a projectile motion. The differential equation is given by `(d^2 r)/(dt^2) = -gz`, where `r = (x, z)` is reduced to two dimensions for simplicity, and `g` is the gravity acceleration. The initial positions are fixed to `x(0) = z(0) = 0`. The PINN model predicts `x(t), z(t)` for `t, v0_x, v0_z`, where `v0_x, v0_z` are initial velocities at `t=0`.
+This module implements the Physics Informed Neural Network (PINN) model for a projectile motion. The differential equation is given by `(d^2 r)/(dt^2) = -g`, where `r = (x, z)` is reduced to two dimensions for simplicity, and `g` is the gravity acceleration. The initial positions are fixed to `x(0) = z(0) = 0`. The PINN model predicts `x(t), z(t)` for `t, v0_x, v0_z`, where `v0_x, v0_z` are initial velocities at `t=0`.
 
 ## Description
 
