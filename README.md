@@ -1,12 +1,6 @@
 # pinn_projectile
 
-This module implements the Physics Informed Neural Network (PINN) model for a projectile motion. The differential equation is given by
-
-$$
-\frac{d^2 \mathbf{r}}{dt} = -gz,
-$$
-
-where $\mathbf{r} = (x, z)$ is the spatial position and $g$ is the gravity acceleration. For simplicity, the spacial variables are reduced to two dimensions `x(t)` and `z(t)`, and initial positions are fixed to `x(0) = z(0) = 0`. The PINN model predicts `x(t), z(t)` for `t, v0_x, v0_z`, where `v0_x, v0_z` are initial velocities at `t=0`.
+This module implements the Physics Informed Neural Network (PINN) model for a projectile motion. The differential equation is given by `(d^2 r)/(dt^2) = -gz`, where `r = (x, z)` is reduced to two dimensions for simplicity, and $g$ is the gravity acceleration. The initial positions are fixed to `x(0) = z(0) = 0`. The PINN model predicts `x(t), z(t)` for `t, v0_x, v0_z`, where `v0_x, v0_z` are initial velocities at `t=0`.
 
 ## Description
 
@@ -51,6 +45,50 @@ GPU acceleration is recommended in the following environments.
 
 ## Usage
 
-example result (image)
+An example of solving the projectile motion by the PINN is demonstraned in `main.py`. The PINN is trained by the following procedure.
+
+1. Building the keras network model
+    ```Python
+    from lib.network import Network
+    network = Network.build().
+    network.summary()
+    ```
+    The following table is the default layers in the network model.
+    ```
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #
+    =================================================================
+    input_1 (InputLayer)         [(None, 3)]               0
+    _________________________________________________________________
+    dense (Dense)                (None, 32)                128
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 32)                1056
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 2)                 66
+    =================================================================
+    Total params: 1,250
+    Trainable params: 1,250
+    Non-trainable params: 0
+    _________________________________________________________________
+    ```
+2. Building the PINN model.
+    ```Python
+    from lib.pinn import PINN
+    pinn = PINN(network, g).build()
+    ```
+3. Optimizing the PINN model for training samples.
+    ```Python
+    from lib.optimizer import L_BFGS_B
+    samples = np.random.rand(num_train_samples, 3)
+    lbfgs = L_BFGS_B(model=pinn, samples=samples)
+    lbfgs.fit()
+    ```
+    The progress is printed as follows. The optimization is terminated for loss ~ 3e-6. 
+    ```
+    Optimizer: L-BFGS-B (maxiter=3000)
+    2619/3000 [=========================>....] - ETA: 19s - loss: 3.5697e-06
+    ```
+
+An example result of `main.py` is shown below.
 
 ![result_img](result_img.png)
