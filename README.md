@@ -56,7 +56,7 @@ An example of solving the projectile motion by the PINN is demonstraned in `main
     The following table is the default layers in the network model.
     ```
     _________________________________________________________________
-    Layer (type)                 Output Shape              Param #
+    Layer (type)                 Output Shape              Param
     =================================================================
     input_1 (InputLayer)         [(None, 3)]               0
     _________________________________________________________________
@@ -83,7 +83,7 @@ An example of solving the projectile motion by the PINN is demonstraned in `main
     lbfgs = L_BFGS_B(model=pinn, samples=samples)
     lbfgs.fit()
     ```
-    The progress is printed as follows. The optimization is terminated for loss ~ 3e-6. 
+    The progress is printed as follows. The optimization is terminated for loss ~ 3e-6.
     ```
     Optimizer: L-BFGS-B (maxiter=3000)
     2619/3000 [=========================>....] - ETA: 19s - loss: 3.5697e-06
