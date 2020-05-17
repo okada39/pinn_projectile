@@ -53,7 +53,7 @@ An example of solving the projectile motion by the PINN is demonstraned in `main
     network = Network.build().
     network.summary()
     ```
-    The following table is the default layers in the network model.
+    The following table depicts layers in the default network.
     ```
     _________________________________________________________________
     Layer (type)                 Output Shape              Param
@@ -71,7 +71,7 @@ An example of solving the projectile motion by the PINN is demonstraned in `main
     Non-trainable params: 0
     _________________________________________________________________
     ```
-2. Building the PINN model.
+2. Building the PINN model (`g` is the gravity acceleration).
     ```Python
     from lib.pinn import PINN
     pinn = PINN(network, g).build()
