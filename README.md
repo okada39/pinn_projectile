@@ -48,7 +48,7 @@ GPU acceleration is recommended in the following environments.
 An example of solving the projectile motion by the PINN is demonstraned in `main.py`. The PINN is trained by the following procedure.
 
 1. Building the keras network model
-    ```Python
+    ```python
     from lib.network import Network
     network = Network.build().
     network.summary()
@@ -72,12 +72,12 @@ An example of solving the projectile motion by the PINN is demonstraned in `main
     _________________________________________________________________
     ```
 2. Building the PINN model (`g` is the gravity acceleration).
-    ```Python
+    ```python
     from lib.pinn import PINN
     pinn = PINN(network, g).build()
     ```
 3. Optimizing the PINN model for training samples.
-    ```Python
+    ```python
     from lib.optimizer import L_BFGS_B
     samples = np.random.rand(num_train_samples, 3)
     lbfgs = L_BFGS_B(model=pinn, samples=samples)
