@@ -3,8 +3,7 @@ from .layer import GradientLayer
 
 class PINN:
     """
-    Train a projectile motion in the keras network model
-    using the physics informed neural network (PINN).
+    Build a physics informed neural network (PINN) model for a projectile motion.
 
     Attributes:
         input: input layer with shape (t, v0_x, v0_z).
@@ -15,8 +14,7 @@ class PINN:
     def __init__(self, network, g=1):
         """
         Args:
-            input: input layer with shape (t, v0_x, v0_z).
-            grads: gradient layer.
+            network: network model with input (t, v0_x, v0_z) and output (x, z)
             g: gravity acceleration.
         """
 
