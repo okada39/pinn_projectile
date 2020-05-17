@@ -20,7 +20,7 @@ Scripts is given as follows.
     * `layer.py` : computing 1st and 2nd derivatives as a custom layer.
     * `network.py` : building a keras network model.
     * `optimizer.py` : implementing the L-BFGS-B optimization.
-    * `pinn.py` : training the projectile motion in the network model.
+    * `pinn.py` : building a PINN model.
     * `tf_silent.py` : suppressing tensorflow warnings
 * `main.py` : main routine to run and test the PINN solver.
 
